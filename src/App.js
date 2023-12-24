@@ -5,8 +5,9 @@ import FoodsCategory from './components/FoodsCategory'
 
 import './App.scss'
 import { useDispatch, useSelector } from "react-redux";
-import {reqFoodList} from "./store/modules/takeaway";
+import { reqFoodList } from "./store/modules/takeaway";
 import { useEffect } from "react";
+
 const App = () => {
   
   const dispatch = useDispatch()
@@ -14,24 +15,25 @@ const App = () => {
     dispatch(reqFoodList())
   }, [dispatch]);
   
-  const {foodsList}= useSelector(state => state.foods)
+  const {foodsList, activeIndex} = useSelector(state => state.foods)
   
   return (
     <div className="home">
       {/* 導覽 */}
-      <NavBar />
+      <NavBar/>
       
       {/* 內容 */}
       <div className="content-wrap">
         <div className="content">
-          <Menu />
+          <Menu/>
           
           <div className="list-content">
             <div className="goods-list">
               {/* 外送商品列表 */}
-              {foodsList.map(item => {
+              {foodsList.map((item, index) => {
                 return (
-                  <FoodsCategory
+                  // 條件渲染
+                  activeIndex === index && <FoodsCategory
                     key={item.tag}
                     // 清單標題
                     name={item.name}
@@ -46,7 +48,7 @@ const App = () => {
       </div>
       
       {/* 購物車 */}
-      <Cart />
+      <Cart/>
     </div>
   )
 }
