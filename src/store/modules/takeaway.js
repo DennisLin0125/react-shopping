@@ -4,16 +4,25 @@ import axios from "axios";
 const foodStore = createSlice({
   name:'foods',
   initialState:{
-    foodsList:[]
+    // 商品列表
+    foodsList:[],
+    // 菜單激活
+    activeIndex:0
   },
   reducers:{
     setFoodsList(state,action){
       state.foodsList = action.payload
+    },
+    changeActiveIndex(state,action){
+      state.activeIndex = action.payload
     }
   }
 })
 
-const {setFoodsList} = foodStore.actions
+const {
+  setFoodsList,
+  changeActiveIndex,
+} = foodStore.actions
 
 const reqFoodList = () => {
   return async (dispatch) => {
@@ -22,7 +31,7 @@ const reqFoodList = () => {
   }
 }
 
-export {reqFoodList}
+export {reqFoodList,changeActiveIndex}
 
 const foodsReducer = foodStore.reducer
 
