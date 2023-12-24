@@ -1,8 +1,13 @@
 import classNames from 'classnames'
 import Count from '../Count'
 import './index.scss'
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+  const {cartList} = useSelector(state => state.foods)
+  
+  // 計算總價
+  const totalPrice = cartList.reduce((a, c) => a + c.price * c.count, 0)
   const cart = []
   return (
     <div className="cartContainer">
@@ -13,21 +18,21 @@ const Cart = () => {
       <div className="cart">
         {/* fill 新增fill類別名稱可以切換購物車狀態*/}
         {/* 購物車數量 */}
-        <div className={classNames('icon')}>
-          {true && <div className="cartCornerMark">{0}</div>}
+        <div className={classNames('icon',cartList.length > 0 && 'fill')}>
+          {cartList.length > 0 && <div className="cartCornerMark">{cartList.length}</div>}
         </div>
         {/* 購物車價格 */}
         <div className="main">
           <div className="price">
              <span className="payableAmount">
                <span className="payableAmountUnit">¥</span>
-               {0.00}
+               {totalPrice.toFixed(2)}
              </span>
           </div>
           <span className="text">預估另需配送費 ¥5</span>
         </div>
         {/* 結算 or 起送 */}
-        {false ? (
+        {cartList.length > 0 ? (
           <div className="goToPreview">去結算</div>
         ) : (
           <div className="minFee">¥20起送</div>
@@ -47,7 +52,7 @@ const Cart = () => {
           {cart.map(item => {
             return (
               <div className="cartItem" key={item.id}>
-                <img className="shopPic" src={item.picture} alt="" />
+                <img className="shopPic" src={item.picture} alt=""/>
                 <div className="main">
                   <div className="skuInfo">
                     <div className="name">{item.name}</div>
