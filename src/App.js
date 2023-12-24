@@ -13,10 +13,10 @@ const foodsList = [
       {
         "id": 8078956697,
         "name": "烤羊肉串(10串)",
-        "like_ratio_desc": "好评度100%",
+        "like_ratio_desc": "好評度100%",
         "month_saled": 40,
         "unit": "10串",
-        "food_tag_list": ["点评网友推荐"],
+        "food_tag_list": ["點評網友推薦"],
         "price": 90,
         "picture": "https://zqran.gitee.io/images/waimai/8078956697.jpg",
         "description": "",
@@ -24,8 +24,8 @@ const foodsList = [
       },
       {
         "id": 7384994864,
-        "name": "腊味煲仔饭",
-        "like_ratio_desc": "好评度81%",
+        "name": "臘味煲仔飯",
+        "like_ratio_desc": "好評度81%",
         "month_saled": 100,
         "unit": "1人份",
         "food_tag_list": [],
@@ -36,26 +36,26 @@ const foodsList = [
       },
       {
         "id": 2305772036,
-        "name": "鸡腿胡萝卜焖饭",
-        "like_ratio_desc": "好评度91%",
+        "name": "雞腿胡蘿蔔燜飯",
+        "like_ratio_desc": "好評度91%",
         "month_saled": 300,
         "unit": "1人份",
         "food_tag_list": [],
         "price": 34.32,
         "picture": "https://zqran.gitee.io/images/waimai/2305772036.jpg",
-        "description": "主料：大米、鸡腿、菜心、胡萝卜",
+        "description": "主料：米、雞腿、菜心、胡蘿蔔",
         "tag": "318569657"
       },
       {
         "id": 2233861812,
-        "name": "小份酸汤莜面鱼鱼+肉夹馍套餐",
-        "like_ratio_desc": "好评度73%",
+        "name": "小份酸湯莜麵魚魚+肉夾餉套餐",
+        "like_ratio_desc": "好評度73%",
         "month_saled": 600,
         "unit": "1人份",
-        "food_tag_list": ["“口味好,包装很好～点赞”"],
+        "food_tag_list": ["「口味好,包裝很好～按讚」"],
         "price": 34.32,
         "picture": "https://zqran.gitee.io/images/waimai/2233861812.jpg",
-        "description": "酸汤莜面鱼鱼，主料：酸汤、莜面 肉夹馍，主料：白皮饼、猪肉",
+        "description": "酸湯莜麵魚魚，主料：酸湯、莜麵 肉夾饃，主料：白皮餅、豬肉",
         "tag": "318569657"
       }
     ]
@@ -63,25 +63,25 @@ const foodsList = [
 ]
 
 const App = () => {
-
+  
   return (
     <div className="home">
-      {/* 导航 */}
+      {/* 導覽 */}
       <NavBar />
-
-      {/* 内容 */}
+      
+      {/* 內容 */}
       <div className="content-wrap">
         <div className="content">
           <Menu />
-
+          
           <div className="list-content">
             <div className="goods-list">
-              {/* 外卖商品列表 */}
+              {/* 外送商品列表 */}
               {foodsList.map(item => {
                 return (
                   <FoodsCategory
                     key={item.tag}
-                    // 列表标题
+                    // 清單標題
                     name={item.name}
                     // 列表商品
                     foods={item.foods}
@@ -92,8 +92,8 @@ const App = () => {
           </div>
         </div>
       </div>
-
-      {/* 购物车 */}
+      
+      {/* 購物車 */}
       <Cart />
     </div>
   )
