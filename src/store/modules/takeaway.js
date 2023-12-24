@@ -25,6 +25,19 @@ const foodStore = createSlice({
       } else {
         state.cartList.push(action.payload)
       }
+    },
+    upCount(state, action) {
+      const item = state.cartList.find(item => item.id === action.payload.id)
+      item.count++
+    },
+    downCount(state, action) {
+      const item = state.cartList.find(item => item.id === action.payload.id)
+      if (item.count !== 0) {
+        item.count--
+      }
+    },
+    clearCar(state) {
+      state.cartList = []
     }
   }
 })
@@ -33,6 +46,9 @@ const {
   setFoodsList,
   changeActiveIndex,
   addCart,
+  upCount,
+  downCount,
+  clearCar,
 } = foodStore.actions
 
 const reqFoodList = () => {
@@ -42,7 +58,7 @@ const reqFoodList = () => {
   }
 }
 
-export { reqFoodList, changeActiveIndex, addCart }
+export { reqFoodList, changeActiveIndex, addCart, upCount, downCount, clearCar }
 
 const foodsReducer = foodStore.reducer
 

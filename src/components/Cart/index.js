@@ -1,14 +1,16 @@
 import classNames from 'classnames'
 import Count from '../Count'
 import './index.scss'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { upCount, downCount, clearCar } from "../../store/modules/takeaway";
 
 const Cart = () => {
   const {cartList} = useSelector(state => state.foods)
   
   // 計算總價
   const totalPrice = cartList.reduce((a, c) => a + c.price * c.count, 0)
-  const cart = []
+  
+  const dispatch = useDispatch()
   return (
     <div className="cartContainer">
       {/* 遮罩層 新增visible類別名稱可以顯示出來 */}
@@ -18,7 +20,7 @@ const Cart = () => {
       <div className="cart">
         {/* fill 新增fill類別名稱可以切換購物車狀態*/}
         {/* 購物車數量 */}
-        <div className={classNames('icon',cartList.length > 0 && 'fill')}>
+        <div className={classNames('icon', cartList.length > 0 && 'fill')}>
           {cartList.length > 0 && <div className="cartCornerMark">{cartList.length}</div>}
         </div>
         {/* 購物車價格 */}
@@ -39,17 +41,17 @@ const Cart = () => {
         )}
       </div>
       {/* 新增visible類別名稱 div會顯示出來 */}
-      <div className={classNames('cartPanel')}>
+      <div className={classNames('cartPanel', 'visible')}>
         <div className="header">
           <span className="text">購物車</span>
-          <span className="clearCart">
+          <span className="clearCart" onClick={()=>dispatch(clearCar())}>
              清空購物車
            </span>
         </div>
         
         {/* 購物車清單 */}
         <div className="scrollArea">
-          {cart.map(item => {
+          {cartList.map(item => {
             return (
               <div className="cartItem" key={item.id}>
                 <img className="shopPic" src={item.picture} alt=""/>
@@ -65,6 +67,8 @@ const Cart = () => {
                 <div className="skuBtnWrapper btnGroup">
                   <Count
                     count={item.count}
+                    onPlus={() => dispatch(upCount({id: item.id}))}
+                    onMinus={() => dispatch(downCount({id: item.id}))}
                   />
                 </div>
               </div>
