@@ -4,7 +4,7 @@
 npm i
 ```
 
-# 啟動 mock 
+# 啟動 mock
 
 ```bash
 npm run serve

@@ -12,7 +12,7 @@ const NavBar = () => {
         </div>
         <div className="menu-item">商家</div>
       </div>
-      
+
       <div className="menu-search">
         <div className="menu-form">
           <div className="menu-search-icon"></div>

@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios'
 
 const foodStore = createSlice({
   name: 'foods',
@@ -19,7 +19,7 @@ const foodStore = createSlice({
       state.activeIndex = action.payload
     },
     addCart(state, action) {
-      const item = state.cartList.find(item => item.id === action.payload.id)
+      const item = state.cartList.find((item) => item.id === action.payload.id)
       if (item) {
         item.count++
       } else {
@@ -27,19 +27,19 @@ const foodStore = createSlice({
       }
     },
     upCount(state, action) {
-      const item = state.cartList.find(item => item.id === action.payload.id)
+      const item = state.cartList.find((item) => item.id === action.payload.id)
       item.count++
     },
     downCount(state, action) {
-      const item = state.cartList.find(item => item.id === action.payload.id)
+      const item = state.cartList.find((item) => item.id === action.payload.id)
       if (item.count !== 0) {
         item.count--
       }
     },
     clearCar(state) {
       state.cartList = []
-    }
-  }
+    },
+  },
 })
 
 const {

@@ -1,18 +1,18 @@
 .nav {
+  position: relative;
   display: flex;
   justify-content: space-between;
   height: 40px;
   min-height: 40px;
-  background-color: #ffffff;
-  position: relative;
+  background-color: #fff;
 
   &::after {
     position: absolute;
-    content: '';
-    width: 100%;
-    left: 0;
     bottom: 0;
+    left: 0;
+    width: 100%;
     height: 1px;
+    content: '';
     background-color: #e4e4e4;
     transform: scale(1, 0.5);
     transform-origin: center bottom;
@@ -25,83 +25,89 @@
 
   .menu-item {
     position: relative;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding-left: 15px;
     width: 80px;
-    box-sizing: border-box;
-    color: #666666;
+    padding-left: 15px;
     font-size: 16px;
+    color: #666;
   }
+
   .menu-item.active {
-    color: #333;
     font-weight: bolder;
+    color: #333;
   }
 
   .menu-active-bar {
-    display: inline-block;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 0%;
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    border-radius: 1px;
+    transition: 0.2s;
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    width: 100%;
-    transition: 0.2s;
-    height: 0px;
-    border-radius: 1px;
   }
+
   .menu-active-bar::after {
-    content: '';
-    display: inline-block;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 21px;
+    display: inline-block;
     width: 20px;
+    content: '';
     border-bottom: solid 2px #ffd300;
   }
 
   .menu-comment {
     display: flex;
     align-items: flex-end;
-    margin-left: 2px;
     max-width: 31px;
     height: 16px;
-    line-height: 1;
+    margin-left: 2px;
     font-size: 10px;
+    line-height: 1;
     color: #999;
   }
 
   /* 搜索 */
   .menu-search {
-    flex: 0 0 auto;
     display: flex;
+    flex: 0 0 auto;
     align-items: center;
+
     /* width: 120px; */
     height: 100%;
     margin: 0 10px;
   }
+
   .menu-form {
     display: flex;
     align-items: center;
-    background: #eee;
     height: 25px;
+    background: #eee;
     border-radius: 15px;
   }
+
   .menu-search-icon {
-    background: url(https://zqran.gitee.io/images/waimai/search-icon.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 12px;
-    height: 12px;
     -webkit-flex: none;
     flex: none;
-    margin-left: 6px;
+    width: 12px;
+    height: 12px;
     margin-right: 4px;
+    margin-left: 6px;
+    background: url("https://zqran.gitee.io/images/waimai/search-icon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
   }
+
   .menu-search-text {
+    margin-right: 10px;
     font-size: 11px;
     color: #858687;
     text-align: center;
-    margin-right: 10px;
   }
 }
